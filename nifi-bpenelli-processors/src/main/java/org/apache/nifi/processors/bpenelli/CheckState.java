@@ -27,6 +27,7 @@ import org.apache.nifi.annotation.lifecycle.OnScheduled;
 import org.apache.nifi.components.PropertyDescriptor;
 import org.apache.nifi.components.Validator;
 import org.apache.nifi.distributed.cache.client.DistributedMapCacheClient;
+import org.apache.nifi.expression.ExpressionLanguageScope;
 import org.apache.nifi.flowfile.FlowFile;
 import org.apache.nifi.processor.*;
 import org.apache.nifi.processor.exception.ProcessException;
@@ -72,21 +73,21 @@ public class CheckState extends AbstractProcessor {
             .name("State Key")
             .description("The key containing the state value to compare with.")
             .required(true)
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .addValidator(Validator.VALID)
             .build();
     public static final PropertyDescriptor COMPARE_VAL = new PropertyDescriptor.Builder()
             .name("Compare Value")
             .description("The value to compare with state. If left empty, the FlowFile's content will be used.")
             .required(false)
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .addValidator(Validator.VALID)
             .build();
     public static final PropertyDescriptor CACHE_SVC = new PropertyDescriptor.Builder()
             .name("Distributed Map Cache Service")
             .description("The map cache service providing access to state.")
             .required(true)
-            .expressionLanguageSupported(false)
+            .expressionLanguageSupported(ExpressionLanguageScope.NONE)
             .identifiesControllerService(DistributedMapCacheClient.class)
             .addValidator(Validator.VALID)
             .build();
@@ -94,7 +95,7 @@ public class CheckState extends AbstractProcessor {
             .name("Previous State Attribute Name")
             .description("The name of an attribute to output the previous state value to.")
             .required(false)
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .addValidator(Validator.VALID)
             .build();
     static final String LESS_THAN = "Less Than";
@@ -107,7 +108,7 @@ public class CheckState extends AbstractProcessor {
             .description("Replace state with compare value when compare value " +
                     "is one of the following relative to state.")
             .required(true)
-            .expressionLanguageSupported(false)
+            .expressionLanguageSupported(ExpressionLanguageScope.NONE)
             .allowableValues(LESS_THAN, GREATER_THAN, EQUAL_TO, NOT_EQUAL_TO, NEVER)
             .defaultValue(GREATER_THAN)
             .addValidator(Validator.VALID)

@@ -24,6 +24,7 @@ import org.apache.nifi.annotation.lifecycle.OnScheduled;
 import org.apache.nifi.components.PropertyDescriptor;
 import org.apache.nifi.components.Validator;
 import org.apache.nifi.distributed.cache.client.DistributedMapCacheClient;
+import org.apache.nifi.expression.ExpressionLanguageScope;
 import org.apache.nifi.flowfile.FlowFile;
 import org.apache.nifi.processor.*;
 import org.apache.nifi.processor.exception.ProcessException;
@@ -57,14 +58,14 @@ public class Hold extends AbstractProcessor {
             .name("Topic")
             .description("The hold topic name.")
             .required(true)
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .addValidator(Validator.VALID)
             .build();
     public static final PropertyDescriptor KEY_VALUE = new PropertyDescriptor.Builder()
             .name("Key")
             .description("The hold key.")
             .required(true)
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .addValidator(Validator.VALID)
             .build();
     public static final PropertyDescriptor DUP_VALUE = new PropertyDescriptor.Builder()
@@ -72,14 +73,14 @@ public class Hold extends AbstractProcessor {
             .description("If supplied, and if the Topic, Key, and this value match one that's already in progress, "
                     + "the FlowFile will be sent to the duplicate relationship.")
             .required(false)
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .addValidator(Validator.VALID)
             .build();
     public static final PropertyDescriptor CACHE_SVC = new PropertyDescriptor.Builder()
             .name("Distributed Map Cache Service")
             .description("The Controller Service providing map cache services.")
             .required(true)
-            .expressionLanguageSupported(false)
+            .expressionLanguageSupported(ExpressionLanguageScope.NONE)
             .identifiesControllerService(DistributedMapCacheClient.class)
             .addValidator(Validator.VALID)
             .build();

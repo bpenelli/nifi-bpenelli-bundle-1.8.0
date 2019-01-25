@@ -24,6 +24,7 @@ import org.apache.nifi.annotation.documentation.Tags;
 import org.apache.nifi.annotation.lifecycle.OnScheduled;
 import org.apache.nifi.components.PropertyDescriptor;
 import org.apache.nifi.components.Validator;
+import org.apache.nifi.expression.ExpressionLanguageScope;
 import org.apache.nifi.flowfile.FlowFile;
 import org.apache.nifi.processor.*;
 import org.apache.nifi.processor.exception.ProcessException;
@@ -70,7 +71,7 @@ public class XMLValidator extends AbstractProcessor {
             .name("XML Attribute")
             .description("The name of the attribute containing source XML. If left empty the FlowFile's contents will be used.")
             .required(false)
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .addValidator(Validator.VALID)
             .build();
 
@@ -78,7 +79,7 @@ public class XMLValidator extends AbstractProcessor {
             .name("XSD Path")
             .description("The path to one or more XSD files to validate against. If more than one, separate with a comma.")
             .required(false)
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .addValidator(Validator.VALID)
             .build();
 
@@ -86,7 +87,7 @@ public class XMLValidator extends AbstractProcessor {
             .name("XSD Text")
             .description("The text of an XSD to validate against. If supplied, this will override XSD Path.")
             .required(false)
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .addValidator(Validator.VALID)
             .build();
 

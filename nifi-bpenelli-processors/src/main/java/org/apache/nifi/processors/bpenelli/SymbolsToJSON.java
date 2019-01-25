@@ -24,6 +24,7 @@ import org.apache.nifi.annotation.lifecycle.OnScheduled;
 import org.apache.nifi.components.PropertyDescriptor;
 import org.apache.nifi.components.PropertyValue;
 import org.apache.nifi.components.Validator;
+import org.apache.nifi.expression.ExpressionLanguageScope;
 import org.apache.nifi.flowfile.FlowFile;
 import org.apache.nifi.processor.*;
 import org.apache.nifi.processor.exception.ProcessException;
@@ -48,7 +49,7 @@ public class SymbolsToJSON extends AbstractProcessor {
             .name("Matching Prefix")
             .description("All attributes with this prefix will be included.")
             .required(false)
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .addValidator(Validator.VALID)
             .build();
 
@@ -64,7 +65,7 @@ public class SymbolsToJSON extends AbstractProcessor {
             .name("RegEx")
             .description("All attributes that match this regular expression will be included.")
             .required(false)
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .addValidator(Validator.VALID)
             .build();
 
@@ -72,7 +73,7 @@ public class SymbolsToJSON extends AbstractProcessor {
             .name("Attribute List")
             .description("A delimited list of attributes to include.")
             .required(false)
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .addValidator(Validator.VALID)
             .build();
 
@@ -81,7 +82,7 @@ public class SymbolsToJSON extends AbstractProcessor {
             .description("Delimiter used to separate attribute names in the Attributes List property. Defaults to comma.")
             .required(true)
             .defaultValue(",")
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .addValidator(Validator.VALID)
             .build();
 
@@ -115,7 +116,7 @@ public class SymbolsToJSON extends AbstractProcessor {
                 .name(propertyDescriptorName)
                 .required(false)
                 .addValidator(StandardValidators.ATTRIBUTE_KEY_PROPERTY_NAME_VALIDATOR)
-                .expressionLanguageSupported(true)
+                .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
                 .dynamic(true);
 
         return propertyBuilder.build();

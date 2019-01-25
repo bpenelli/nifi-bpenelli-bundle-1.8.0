@@ -43,7 +43,7 @@ public class GoGetterCacheCallable extends GoGetterCallable {
      * call
      **************************************************************/
     @Override
-    public GoGetterCallResult call() throws Exception {
+    public GoGetterCallResult call() {
         try {
             GoGetterCallResult retVal = new GoGetterCallResult();
             retVal.key = this.key;

@@ -1,0 +1,10 @@
+org\apache\nifi\processors\bpenelli\GoldenGateToSQLTest.class
+org\apache\nifi\processors\bpenelli\SymbolsToJSONTest.class
+org\apache\nifi\processors\bpenelli\EvaluateXMLTest$1.class
+org\apache\nifi\processors\bpenelli\XMLToAttributesTest.class
+org\apache\nifi\processors\bpenelli\ConvertJSONToCSVTest.class
+org\apache\nifi\processors\bpenelli\XMLValidatorTest.class
+org\apache\nifi\processors\bpenelli\GoldenGateMergeViewsTest.class
+org\apache\nifi\processors\bpenelli\EvaluateXMLTest.class
+org\apache\nifi\processors\bpenelli\GoGetterTest.class
+org\apache\nifi\processors\bpenelli\ContentToAttributeTest.class

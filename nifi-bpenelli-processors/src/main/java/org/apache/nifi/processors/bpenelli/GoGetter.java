@@ -29,6 +29,7 @@ import org.apache.nifi.components.PropertyDescriptor;
 import org.apache.nifi.components.Validator;
 import org.apache.nifi.dbcp.DBCPService;
 import org.apache.nifi.distributed.cache.client.DistributedMapCacheClient;
+import org.apache.nifi.expression.ExpressionLanguageScope;
 import org.apache.nifi.flowfile.FlowFile;
 import org.apache.nifi.hbase.HBaseClientService;
 import org.apache.nifi.processor.*;
@@ -74,7 +75,7 @@ public class GoGetter extends AbstractProcessor {
             .description("The text of a GOG configuration JSON. If left empty, and 'Attribute Name' is empty, the " +
                     "FlowFile's content will be used.")
             .required(false)
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .addValidator(Validator.VALID)
             .build();
 
@@ -83,7 +84,7 @@ public class GoGetter extends AbstractProcessor {
             .description("The name of an attribute containing the GOG configuration JSON. If 'GOG Text' is empty, " +
                     "and this is left empty, the FlowFile's content will be used.")
             .required(false)
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .addValidator(Validator.VALID)
             .build();
 
@@ -91,7 +92,7 @@ public class GoGetter extends AbstractProcessor {
             .name("Distributed Map Cache Service")
             .description("The Controller Service containing the cached key map entries to retrieve.")
             .required(false)
-            .expressionLanguageSupported(false)
+            .expressionLanguageSupported(ExpressionLanguageScope.NONE)
             .identifiesControllerService(DistributedMapCacheClient.class)
             .addValidator(Validator.VALID)
             .build();

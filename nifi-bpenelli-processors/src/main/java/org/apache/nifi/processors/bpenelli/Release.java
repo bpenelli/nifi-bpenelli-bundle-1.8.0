@@ -23,6 +23,7 @@ import org.apache.nifi.annotation.lifecycle.OnScheduled;
 import org.apache.nifi.components.PropertyDescriptor;
 import org.apache.nifi.components.Validator;
 import org.apache.nifi.distributed.cache.client.DistributedMapCacheClient;
+import org.apache.nifi.expression.ExpressionLanguageScope;
 import org.apache.nifi.flowfile.FlowFile;
 import org.apache.nifi.processor.*;
 import org.apache.nifi.processor.exception.ProcessException;
@@ -56,7 +57,7 @@ public class Release extends AbstractProcessor {
             .name("Topic")
             .description("The Hold topic name.")
             .required(true)
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .addValidator(Validator.VALID)
             .build();
 
@@ -64,7 +65,7 @@ public class Release extends AbstractProcessor {
             .name("Key")
             .description("The Hold key.")
             .required(true)
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .addValidator(Validator.VALID)
             .build();
 
@@ -72,7 +73,7 @@ public class Release extends AbstractProcessor {
             .name("Distributed Map Cache Service")
             .description("The Controller Service providing map cache services.")
             .required(true)
-            .expressionLanguageSupported(false)
+            .expressionLanguageSupported(ExpressionLanguageScope.NONE)
             .identifiesControllerService(DistributedMapCacheClient.class)
             .addValidator(Validator.VALID)
             .build();

@@ -21,6 +21,7 @@ import org.apache.nifi.annotation.documentation.Tags;
 import org.apache.nifi.annotation.lifecycle.OnScheduled;
 import org.apache.nifi.components.PropertyDescriptor;
 import org.apache.nifi.components.Validator;
+import org.apache.nifi.expression.ExpressionLanguageScope;
 import org.apache.nifi.flowfile.FlowFile;
 import org.apache.nifi.hbase.HBaseClientService;
 import org.apache.nifi.processor.*;
@@ -49,7 +50,7 @@ public class HBaseSequence extends AbstractProcessor {
             .name("Table Name")
             .description("The name of the HBase table to use to maintain the sequence.")
             .required(true)
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .addValidator(Validator.VALID)
             .build();
 
@@ -57,7 +58,7 @@ public class HBaseSequence extends AbstractProcessor {
             .name("Sequence Name")
             .description("The HBase row key where the current value is maintained. If it doesn't already exist in the HBase table, it will be created.")
             .required(true)
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .addValidator(Validator.VALID)
             .build();
 
@@ -65,7 +66,7 @@ public class HBaseSequence extends AbstractProcessor {
             .name("Column Family")
             .description("The name of the column family where the sequence value will be stored.")
             .required(true)
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .defaultValue("f")
             .addValidator(Validator.VALID)
             .build();
@@ -74,7 +75,7 @@ public class HBaseSequence extends AbstractProcessor {
             .name("Column Qualifier")
             .description("The name of the column qualifier where the sequence value will be stored.")
             .required(true)
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .defaultValue("q")
             .addValidator(Validator.VALID)
             .build();
@@ -83,7 +84,7 @@ public class HBaseSequence extends AbstractProcessor {
             .name("Start With")
             .description("The number to start with when the sequence doesn't yet exist and has to be created.")
             .required(true)
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .defaultValue("1")
             .addValidator(StandardValidators.LONG_VALIDATOR)
             .build();
@@ -92,7 +93,7 @@ public class HBaseSequence extends AbstractProcessor {
             .name("Increment By")
             .description("The number to increment by.")
             .required(true)
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .defaultValue("1")
             .addValidator(StandardValidators.LONG_VALIDATOR)
             .build();
@@ -101,7 +102,7 @@ public class HBaseSequence extends AbstractProcessor {
             .name("Batch Size")
             .description("The number of flow files to process at a time.")
             .required(true)
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .defaultValue("1")
             .addValidator(StandardValidators.INTEGER_VALIDATOR)
             .build();
@@ -111,7 +112,7 @@ public class HBaseSequence extends AbstractProcessor {
             .name("Output Attribute")
             .description("The name of the attribute on the FlowFile to write the next Sequence value to.")
             .required(true)
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .defaultValue("sequence.value")
             .addValidator(StandardValidators.ATTRIBUTE_KEY_VALIDATOR)
             .build();

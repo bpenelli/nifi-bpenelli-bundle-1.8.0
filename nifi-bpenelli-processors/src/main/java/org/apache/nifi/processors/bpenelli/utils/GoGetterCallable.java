@@ -30,5 +30,5 @@ abstract public class GoGetterCallable implements Callable<GoGetterCallResult>  
     /**************************************************************
      * call
      **************************************************************/
-    abstract public GoGetterCallResult call() throws Exception;
+    abstract public GoGetterCallResult call();
 }

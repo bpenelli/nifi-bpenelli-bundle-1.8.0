@@ -22,6 +22,7 @@ import org.apache.nifi.annotation.documentation.Tags;
 import org.apache.nifi.annotation.lifecycle.OnScheduled;
 import org.apache.nifi.components.PropertyDescriptor;
 import org.apache.nifi.components.Validator;
+import org.apache.nifi.expression.ExpressionLanguageScope;
 import org.apache.nifi.flowfile.FlowFile;
 import org.apache.nifi.processor.*;
 import org.apache.nifi.processor.exception.ProcessException;
@@ -72,7 +73,7 @@ public class XMLToAttributes extends AbstractProcessor {
             .name("XML Root Path")
             .description("The path to the root node containing the elements to extract.")
             .required(false)
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .addValidator(Validator.VALID)
             .build();
 
@@ -82,7 +83,7 @@ public class XMLToAttributes extends AbstractProcessor {
             .required(true)
             .allowableValues("table", "record")
             .defaultValue("table")
-            .expressionLanguageSupported(false)
+            .expressionLanguageSupported(ExpressionLanguageScope.NONE)
             .addValidator(Validator.VALID)
             .build();
 
@@ -90,7 +91,7 @@ public class XMLToAttributes extends AbstractProcessor {
             .name("Attribute Name")
             .description("The name of the attribute containing source XML. If left empty the FlowFile's contents will be used.")
             .required(false)
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .addValidator(Validator.VALID)
             .build();
 
@@ -98,7 +99,7 @@ public class XMLToAttributes extends AbstractProcessor {
             .name("Attribute Prefix")
             .description("A prefix to use on all the resulting attribute names.")
             .required(false)
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .addValidator(Validator.VALID)
             .build();
 
@@ -107,7 +108,7 @@ public class XMLToAttributes extends AbstractProcessor {
             .description("Delimiter used to separate names in the \"Attributes to Rename\" and \"New Names\" properties. Defaults to comma.")
             .required(true)
             .defaultValue(",")
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .addValidator(Validator.VALID)
             .build();
 
@@ -115,7 +116,7 @@ public class XMLToAttributes extends AbstractProcessor {
             .name("Attributes to Rename")
             .description("Delimited list of element names to change when creating the FlowFile attributes.")
             .required(false)
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .addValidator(Validator.VALID)
             .build();
 
@@ -123,7 +124,7 @@ public class XMLToAttributes extends AbstractProcessor {
             .name("New Names")
             .description("Delimited list of new names to apply to the \"Attributes to Rename\".")
             .required(false)
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .addValidator(Validator.VALID)
             .build();
 
@@ -133,7 +134,7 @@ public class XMLToAttributes extends AbstractProcessor {
             .required(true)
             .allowableValues("true", "false")
             .defaultValue("true")
-            .expressionLanguageSupported(false)
+            .expressionLanguageSupported(ExpressionLanguageScope.NONE)
             .addValidator(Validator.VALID)
             .build();
 

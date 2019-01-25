@@ -25,6 +25,7 @@ import org.apache.nifi.annotation.documentation.Tags;
 import org.apache.nifi.annotation.lifecycle.OnScheduled;
 import org.apache.nifi.components.PropertyDescriptor;
 import org.apache.nifi.components.Validator;
+import org.apache.nifi.expression.ExpressionLanguageScope;
 import org.apache.nifi.flowfile.FlowFile;
 import org.apache.nifi.processor.*;
 import org.apache.nifi.processor.exception.ProcessException;
@@ -56,7 +57,7 @@ public class ConvertJSONToCSV extends AbstractProcessor {
             .name("Schema")
             .description("The schema to use to map JSON to CSV.")
             .required(true)
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .addValidator(Validator.VALID)
             .build();
 
@@ -65,7 +66,7 @@ public class ConvertJSONToCSV extends AbstractProcessor {
             .description("The delimiter to use.")
             .required(true)
             .defaultValue(",")
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .addValidator(Validator.VALID)
             .build();
 
@@ -76,7 +77,7 @@ public class ConvertJSONToCSV extends AbstractProcessor {
             .required(true)
             .allowableValues("true", "false")
             .defaultValue("true")
-            .expressionLanguageSupported(false)
+            .expressionLanguageSupported(ExpressionLanguageScope.NONE)
             .addValidator(Validator.VALID)
             .build();
 
@@ -87,7 +88,7 @@ public class ConvertJSONToCSV extends AbstractProcessor {
             .required(true)
             .allowableValues("true", "false")
             .defaultValue("true")
-            .expressionLanguageSupported(false)
+            .expressionLanguageSupported(ExpressionLanguageScope.NONE)
             .addValidator(Validator.VALID)
             .build();
 

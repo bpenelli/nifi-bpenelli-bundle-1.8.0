@@ -23,6 +23,7 @@ import org.apache.nifi.annotation.documentation.Tags;
 import org.apache.nifi.annotation.lifecycle.OnScheduled;
 import org.apache.nifi.components.PropertyDescriptor;
 import org.apache.nifi.components.Validator;
+import org.apache.nifi.expression.ExpressionLanguageScope;
 import org.apache.nifi.flowfile.FlowFile;
 import org.apache.nifi.hbase.HBaseClientService;
 import org.apache.nifi.processor.*;
@@ -56,7 +57,7 @@ public class ScanHBase extends AbstractProcessor {
             .name("Table Name")
             .description("The name of the HBase table to use to maintain the sequence.")
             .required(true)
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .addValidator(Validator.VALID)
             .build();
 
@@ -64,7 +65,7 @@ public class ScanHBase extends AbstractProcessor {
             .name("Row Key Name")
             .description("The name to assign the row key value to.")
             .required(true)
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .defaultValue("row_key")
             .addValidator(StandardValidators.ATTRIBUTE_KEY_VALIDATOR)
             .build();
@@ -73,7 +74,7 @@ public class ScanHBase extends AbstractProcessor {
             .name("Filter Expression")
             .description("An HBase filter expression.")
             .required(true)
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .addValidator(Validator.VALID)
             .build();
 
@@ -83,7 +84,7 @@ public class ScanHBase extends AbstractProcessor {
             .required(true)
             .allowableValues(HBaseResults.FMT_TBL_FAM_QUAL, HBaseResults.FMT_TBL_QUAL, HBaseResults.FMT_FAM_QUAL, HBaseResults.FMT_QUAL)
             .defaultValue(HBaseResults.FMT_QUAL)
-            .expressionLanguageSupported(false)
+            .expressionLanguageSupported(ExpressionLanguageScope.NONE)
             .addValidator(Validator.VALID)
             .build();
 

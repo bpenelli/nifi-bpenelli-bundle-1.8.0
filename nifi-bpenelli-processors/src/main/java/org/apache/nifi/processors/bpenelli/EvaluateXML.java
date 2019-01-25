@@ -25,6 +25,7 @@ import org.apache.nifi.components.PropertyDescriptor;
 import org.apache.nifi.components.PropertyValue;
 import org.apache.nifi.components.Validator;
 import org.apache.nifi.distributed.cache.client.DistributedMapCacheClient;
+import org.apache.nifi.expression.ExpressionLanguageScope;
 import org.apache.nifi.flowfile.FlowFile;
 import org.apache.nifi.processor.*;
 import org.apache.nifi.processor.exception.ProcessException;
@@ -67,7 +68,7 @@ public class EvaluateXML extends AbstractProcessor {
             .name("Attribute Name")
             .description("The name of the attribute containing source XML. If left empty the FlowFile's contents will be used.")
             .required(false)
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .addValidator(Validator.VALID)
             .build();
 
@@ -75,7 +76,7 @@ public class EvaluateXML extends AbstractProcessor {
             .name("Cache Key")
             .description("The key to a cached entry containing XML.")
             .required(false)
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .addValidator(Validator.VALID)
             .build();
 
@@ -83,7 +84,7 @@ public class EvaluateXML extends AbstractProcessor {
             .name("Distributed Map Cache Service")
             .description("The Controller Service used to access cached XML.")
             .required(false)
-            .expressionLanguageSupported(false)
+            .expressionLanguageSupported(ExpressionLanguageScope.NONE)
             .identifiesControllerService(DistributedMapCacheClient.class)
             .addValidator(Validator.VALID)
             .build();
@@ -128,7 +129,7 @@ public class EvaluateXML extends AbstractProcessor {
     protected PropertyDescriptor getSupportedDynamicPropertyDescriptor(final String propertyDescriptorName) {
         return new PropertyDescriptor.Builder()
                 .name(propertyDescriptorName)
-                .expressionLanguageSupported(true)
+                .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
                 .addValidator(StandardValidators.ATTRIBUTE_KEY_PROPERTY_NAME_VALIDATOR)
                 .required(false)
                 .dynamic(true)

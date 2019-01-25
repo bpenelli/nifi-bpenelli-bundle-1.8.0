@@ -25,6 +25,7 @@ import org.apache.nifi.annotation.lifecycle.OnScheduled;
 import org.apache.nifi.components.PropertyDescriptor;
 import org.apache.nifi.components.PropertyValue;
 import org.apache.nifi.components.Validator;
+import org.apache.nifi.expression.ExpressionLanguageScope;
 import org.apache.nifi.flowfile.FlowFile;
 import org.apache.nifi.processor.*;
 import org.apache.nifi.processor.exception.ProcessException;
@@ -56,7 +57,7 @@ public class GoldenGateMergeViews extends AbstractProcessor {
             .name("Trail File Format")
             .description("The format of the trail file.")
             .required(true)
-            .expressionLanguageSupported(false)
+            .expressionLanguageSupported(ExpressionLanguageScope.NONE)
             .addValidator(Validator.VALID)
             .allowableValues("JSON")
             .defaultValue("JSON")
@@ -66,7 +67,7 @@ public class GoldenGateMergeViews extends AbstractProcessor {
             .name("Convert Case")
             .description("Convert table and column name case.")
             .required(true)
-            .expressionLanguageSupported(false)
+            .expressionLanguageSupported(ExpressionLanguageScope.NONE)
             .addValidator(Validator.VALID)
             .allowableValues("None", "Upper", "Lower")
             .defaultValue("None")
@@ -76,7 +77,7 @@ public class GoldenGateMergeViews extends AbstractProcessor {
             .name("Target Schema")
             .description("The target schema name. Only needed if overriding the one in the trail file.")
             .required(false)
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .addValidator(Validator.VALID)
             .build();
 
@@ -84,7 +85,7 @@ public class GoldenGateMergeViews extends AbstractProcessor {
             .name("Include Golden Gate Fields")
             .description("A comma delimited list of Golden Gate single value header fields that should be added to the final JSON.")
             .required(false)
-            .expressionLanguageSupported(false)
+            .expressionLanguageSupported(ExpressionLanguageScope.NONE)
             .addValidator(Validator.VALID)
             .build();
 
@@ -92,7 +93,7 @@ public class GoldenGateMergeViews extends AbstractProcessor {
             .name("Output Attribute Name")
             .description("The name of the attribute to output the JSON to. If left empty, it will be written to the FlowFile's content.")
             .required(false)
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .addValidator(Validator.VALID)
             .build();
 
@@ -142,7 +143,7 @@ public class GoldenGateMergeViews extends AbstractProcessor {
                 .name(propertyDescriptorName)
                 .required(false)
                 .addValidator(StandardValidators.ATTRIBUTE_KEY_PROPERTY_NAME_VALIDATOR)
-                .expressionLanguageSupported(true)
+                .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
                 .dynamic(true)
                 .build();
     }

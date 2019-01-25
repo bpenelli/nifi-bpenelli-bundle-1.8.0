@@ -26,6 +26,7 @@ import org.apache.nifi.annotation.documentation.Tags;
 import org.apache.nifi.annotation.lifecycle.OnScheduled;
 import org.apache.nifi.components.PropertyDescriptor;
 import org.apache.nifi.components.Validator;
+import org.apache.nifi.expression.ExpressionLanguageScope;
 import org.apache.nifi.flowfile.FlowFile;
 import org.apache.nifi.processor.*;
 import org.apache.nifi.processor.exception.ProcessException;
@@ -58,7 +59,7 @@ public class UpdateFlowFile extends AbstractProcessor {
             .name("New Content")
             .description("New FlowFile content. If empty, the contents will be left as is.")
             .required(false)
-            .expressionLanguageSupported(true)
+            .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .addValidator(Validator.VALID)
             .build();
 
@@ -66,7 +67,7 @@ public class UpdateFlowFile extends AbstractProcessor {
             .name("Evaluate Content Expression Language")
             .description("If true, expression language will be evaluated on the given 'New Content'. Default false.")
             .required(true)
-            .expressionLanguageSupported(false)
+            .expressionLanguageSupported(ExpressionLanguageScope.NONE)
             .allowableValues("true", "false")
             .defaultValue("false")
             .addValidator(Validator.VALID)
@@ -76,7 +77,7 @@ public class UpdateFlowFile extends AbstractProcessor {
             .name("Evaluate Attribute Expression Language")
             .description("If true, expression language will be evaluated on the given attributes. Default false.")
             .required(true)
-            .expressionLanguageSupported(false)
+            .expressionLanguageSupported(ExpressionLanguageScope.NONE)
             .allowableValues("true", "false")
             .defaultValue("false")
             .addValidator(Validator.VALID)
@@ -86,7 +87,7 @@ public class UpdateFlowFile extends AbstractProcessor {
             .name("Evaluate Recursively")
             .description("If true, expression language will be evaluated recursively to support dynamically generated expressions. Default false.")
             .required(true)
-            .expressionLanguageSupported(false)
+            .expressionLanguageSupported(ExpressionLanguageScope.NONE)
             .allowableValues("true", "false")
             .defaultValue("false")
             .addValidator(Validator.VALID)
@@ -135,7 +136,7 @@ public class UpdateFlowFile extends AbstractProcessor {
     protected PropertyDescriptor getSupportedDynamicPropertyDescriptor(final String propertyDescriptorName) {
         return new PropertyDescriptor.Builder()
                 .name(propertyDescriptorName)
-                .expressionLanguageSupported(true)
+                .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
                 .addValidator(StandardValidators.ATTRIBUTE_KEY_PROPERTY_NAME_VALIDATOR)
                 .required(false)
                 .dynamic(true)

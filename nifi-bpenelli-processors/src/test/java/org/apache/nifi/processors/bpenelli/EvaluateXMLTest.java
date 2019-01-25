@@ -14,10 +14,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.bpenelli.nifi.processors;
+package org.apache.nifi.processors.bpenelli;
 
 import org.apache.nifi.components.PropertyDescriptor;
 import org.apache.nifi.components.Validator;
+import org.apache.nifi.expression.ExpressionLanguageScope;
 import org.apache.nifi.processor.ProcessorInitializationContext;
 import org.apache.nifi.processor.Relationship;
 import org.apache.nifi.util.MockFlowFile;
@@ -48,7 +49,7 @@ public class EvaluateXMLTest {
                     .name("extracted_name")
                     .description("XPath to extract the name element from the test XML.")
                     .required(true)
-                    .expressionLanguageSupported(true)
+                    .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
                     .addValidator(Validator.VALID)
                     .build();
 
