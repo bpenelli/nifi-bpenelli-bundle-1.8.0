@@ -1,9 +1,0 @@
-C:\Users\bpenelli\Code\github\nifi-bpenelli-bundle-1.8.0\nifi-bpenelli-processors\src\test\java\org\apache\nifi\processors\bpenelli\EvaluateXMLTest.java
-C:\Users\bpenelli\Code\github\nifi-bpenelli-bundle-1.8.0\nifi-bpenelli-processors\src\test\java\org\apache\nifi\processors\bpenelli\ContentToAttributeTest.java
-C:\Users\bpenelli\Code\github\nifi-bpenelli-bundle-1.8.0\nifi-bpenelli-processors\src\test\java\org\apache\nifi\processors\bpenelli\GoGetterTest.java
-C:\Users\bpenelli\Code\github\nifi-bpenelli-bundle-1.8.0\nifi-bpenelli-processors\src\test\java\org\apache\nifi\processors\bpenelli\GoldenGateMergeViewsTest.java
-C:\Users\bpenelli\Code\github\nifi-bpenelli-bundle-1.8.0\nifi-bpenelli-processors\src\test\java\org\apache\nifi\processors\bpenelli\XMLValidatorTest.java
-C:\Users\bpenelli\Code\github\nifi-bpenelli-bundle-1.8.0\nifi-bpenelli-processors\src\test\java\org\apache\nifi\processors\bpenelli\GoldenGateToSQLTest.java
-C:\Users\bpenelli\Code\github\nifi-bpenelli-bundle-1.8.0\nifi-bpenelli-processors\src\test\java\org\apache\nifi\processors\bpenelli\SymbolsToJSONTest.java
-C:\Users\bpenelli\Code\github\nifi-bpenelli-bundle-1.8.0\nifi-bpenelli-processors\src\test\java\org\apache\nifi\processors\bpenelli\XMLToAttributesTest.java
-C:\Users\bpenelli\Code\github\nifi-bpenelli-bundle-1.8.0\nifi-bpenelli-processors\src\test\java\org\apache\nifi\processors\bpenelli\ConvertJSONToCSVTest.java
