@@ -27,6 +27,7 @@ C:\Users\bpenelli\Code\github\nifi-bpenelli-bundle-1.8.0\nifi-bpenelli-processor
 C:\Users\bpenelli\Code\github\nifi-bpenelli-bundle-1.8.0\nifi-bpenelli-processors\src\main\java\org\apache\nifi\processors\bpenelli\GetSQL.java
 C:\Users\bpenelli\Code\github\nifi-bpenelli-bundle-1.8.0\nifi-bpenelli-processors\src\main\java\org\apache\nifi\processors\bpenelli\CheckState.java
 C:\Users\bpenelli\Code\github\nifi-bpenelli-bundle-1.8.0\nifi-bpenelli-processors\src\main\java\org\apache\nifi\processors\bpenelli\GoGetter.java
+C:\Users\bpenelli\Code\github\nifi-bpenelli-bundle-1.8.0\nifi-bpenelli-processors\src\main\java\org\apache\nifi\processors\bpenelli\JSONToAttributes.java
 C:\Users\bpenelli\Code\github\nifi-bpenelli-bundle-1.8.0\nifi-bpenelli-processors\src\main\java\org\apache\nifi\processors\bpenelli\XMLValidator.java
 C:\Users\bpenelli\Code\github\nifi-bpenelli-bundle-1.8.0\nifi-bpenelli-processors\src\main\java\org\apache\nifi\processors\bpenelli\HBaseSequence.java
 C:\Users\bpenelli\Code\github\nifi-bpenelli-bundle-1.8.0\nifi-bpenelli-processors\src\main\java\org\apache\nifi\processors\bpenelli\utils\GoGetterHBaseCallable.java

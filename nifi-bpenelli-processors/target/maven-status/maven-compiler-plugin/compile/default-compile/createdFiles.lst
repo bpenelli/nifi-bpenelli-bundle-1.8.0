@@ -3,6 +3,7 @@ org\apache\nifi\processors\bpenelli\utils\GoGetterCallable.class
 org\apache\nifi\processors\bpenelli\SymbolsToJSON.class
 org\apache\nifi\processors\bpenelli\GoldenGateToSQL.class
 org\apache\nifi\processors\bpenelli\utils\HBaseResultRow.class
+org\apache\nifi\processors\bpenelli\JSONToAttributes.class
 org\apache\nifi\processors\bpenelli\ScanHBase.class
 org\apache\nifi\processors\bpenelli\GoldenGateMergeViews.class
 org\apache\nifi\processors\bpenelli\GetSQL.class

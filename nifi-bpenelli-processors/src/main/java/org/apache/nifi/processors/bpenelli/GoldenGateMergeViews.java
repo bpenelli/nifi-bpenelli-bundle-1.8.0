@@ -38,9 +38,10 @@ import java.util.concurrent.atomic.AtomicReference;
 
 @SuppressWarnings({"WeakerAccess", "EmptyMethod", "unused"})
 @Tags({"goldengate, merge, trail, json, bpenelli"})
-@CapabilityDescription("Merges the before and after views of an Oracle GoldenGate trail file to create a merged view, and "
-        + "outputs it as JSON. Only op_types \"I\" and \"U\" are supported. FlowFiles with other op_types will be routed "
-        + "to unsupported_op_type relationship. Any defined dynamic property will be included in the JSON.")
+@CapabilityDescription("Merges the before and after views of an Oracle GoldenGate trail file to create a merged view, "
+        + "and outputs it as JSON. Only op_types \"I\", \"U\", and \"D\" are supported. FlowFiles with other op_types "
+        + "will be routed to unsupported_op_type relationship. Any defined dynamic property will be included in the "
+        + "JSON.")
 @SeeAlso()
 @InputRequirement(InputRequirement.Requirement.INPUT_REQUIRED)
 public class GoldenGateMergeViews extends AbstractProcessor {
@@ -85,7 +86,8 @@ public class GoldenGateMergeViews extends AbstractProcessor {
 
     public static final PropertyDescriptor GG_FIELDS = new PropertyDescriptor.Builder()
             .name("Include Golden Gate Fields")
-            .description("A comma delimited list of Golden Gate single value header fields that should be added to the final JSON.")
+            .description("A comma delimited list of Golden Gate single value header fields that should be added to "
+                    + "the final JSON.")
             .required(false)
             .expressionLanguageSupported(ExpressionLanguageScope.NONE)
             .addValidator(Validator.VALID)
@@ -93,7 +95,8 @@ public class GoldenGateMergeViews extends AbstractProcessor {
 
     public static final PropertyDescriptor ATTRIBUTE_NAME = new PropertyDescriptor.Builder()
             .name("Output Attribute Name")
-            .description("The name of the attribute to output the JSON to. If left empty, it will be written to the FlowFile's content.")
+            .description("The name of the attribute to output the JSON to. If left empty, it will be written to the "
+                    + "FlowFile's content.")
             .required(false)
             .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
             .addValidator(Validator.VALID)
@@ -172,7 +175,7 @@ public class GoldenGateMergeViews extends AbstractProcessor {
 
         // Verify it's a supported op_type, i.e. Insert or Update.
         final String opType = content.get().get("op_type").toString();
-        if (!opType.equals("I") && !opType.equals("U")) {
+        if (!opType.equals("I") && !opType.equals("U") && !opType.equals("D")) {
             // Unsupported
             session.transfer(flowFile, REL_UNSUPPORTED);
             session.commit();

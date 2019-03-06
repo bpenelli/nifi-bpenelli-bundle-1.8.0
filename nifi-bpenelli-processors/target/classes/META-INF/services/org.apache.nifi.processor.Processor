@@ -33,3 +33,4 @@ org.apache.nifi.processors.bpenelli.TruncateHBase
 org.apache.nifi.processors.bpenelli.UpdateFlowFile
 org.apache.nifi.processors.bpenelli.XMLToAttributes
 org.apache.nifi.processors.bpenelli.XMLValidator
+org.apache.nifi.processors.bpenelli.JSONToAttributes
