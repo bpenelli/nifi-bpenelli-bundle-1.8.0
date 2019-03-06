@@ -16,6 +16,7 @@
  */
 package org.apache.nifi.processors.bpenelli;
 
+import org.apache.nifi.annotation.behavior.InputRequirement;
 import org.apache.nifi.annotation.behavior.WritesAttribute;
 import org.apache.nifi.annotation.behavior.WritesAttributes;
 import org.apache.nifi.annotation.documentation.CapabilityDescription;
@@ -50,6 +51,7 @@ import java.util.*;
         @WritesAttribute(attribute = "xml.invalid.reason", description = "The reason the FlowFile was sent to invalid relationship.")
 })
 @SeeAlso()
+@InputRequirement(InputRequirement.Requirement.INPUT_REQUIRED)
 public class XMLValidator extends AbstractProcessor {
 
     public static final Relationship REL_SUCCESS = new Relationship.Builder()

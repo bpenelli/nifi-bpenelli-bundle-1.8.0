@@ -18,6 +18,7 @@ package org.apache.nifi.processors.bpenelli;
 
 import groovy.json.JsonBuilder;
 import groovy.json.JsonSlurper;
+import org.apache.nifi.annotation.behavior.InputRequirement;
 import org.apache.nifi.annotation.documentation.CapabilityDescription;
 import org.apache.nifi.annotation.documentation.SeeAlso;
 import org.apache.nifi.annotation.documentation.Tags;
@@ -41,6 +42,7 @@ import java.util.concurrent.atomic.AtomicReference;
         + "outputs it as JSON. Only op_types \"I\" and \"U\" are supported. FlowFiles with other op_types will be routed "
         + "to unsupported_op_type relationship. Any defined dynamic property will be included in the JSON.")
 @SeeAlso()
+@InputRequirement(InputRequirement.Requirement.INPUT_REQUIRED)
 public class GoldenGateMergeViews extends AbstractProcessor {
 
     public static final Relationship REL_SUCCESS = new Relationship.Builder()

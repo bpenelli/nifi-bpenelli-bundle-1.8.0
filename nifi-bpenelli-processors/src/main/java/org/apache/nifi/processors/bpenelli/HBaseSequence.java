@@ -16,6 +16,7 @@
  */
 package org.apache.nifi.processors.bpenelli;
 
+import org.apache.nifi.annotation.behavior.InputRequirement;
 import org.apache.nifi.annotation.documentation.CapabilityDescription;
 import org.apache.nifi.annotation.documentation.Tags;
 import org.apache.nifi.annotation.lifecycle.OnScheduled;
@@ -39,6 +40,7 @@ import java.util.*;
         + "to a FlowFile attribute and updates the table. Provides concurrency safeguards "
         + "by rolling back the Session if the sequence value changes between read and update. "
         + "Uses a HBaseMapCacheClientService controller to perform operations on HBase.")
+@InputRequirement(InputRequirement.Requirement.INPUT_REQUIRED)
 public class HBaseSequence extends AbstractProcessor {
 
     public static final Relationship REL_SUCCESS = new Relationship.Builder()

@@ -17,6 +17,7 @@
 package org.apache.nifi.processors.bpenelli;
 
 import org.apache.nifi.annotation.behavior.DynamicRelationship;
+import org.apache.nifi.annotation.behavior.InputRequirement;
 import org.apache.nifi.annotation.documentation.CapabilityDescription;
 import org.apache.nifi.annotation.documentation.SeeAlso;
 import org.apache.nifi.annotation.documentation.Tags;
@@ -39,6 +40,7 @@ import java.util.*;
 @DynamicRelationship(name = "duplicate", description = "FlowFiles are sent to this relationship when a Duplicate Value "
         + "is supplied and there is a FlowFile with the same Topic, Key, and Duplicate Value already in progress.")
 @SeeAlso(classNames = {"org.bpenelli.nifi.processors.Release"})
+@InputRequirement(InputRequirement.Requirement.INPUT_REQUIRED)
 public class Hold extends AbstractProcessor {
 
     public static final Relationship REL_SUCCESS = new Relationship.Builder()

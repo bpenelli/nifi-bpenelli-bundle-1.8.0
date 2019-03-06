@@ -19,6 +19,7 @@ package org.apache.nifi.processors.bpenelli;
 import groovy.json.JsonSlurper;
 import groovy.json.internal.ValueList;
 import org.apache.commons.io.IOUtils;
+import org.apache.nifi.annotation.behavior.InputRequirement;
 import org.apache.nifi.annotation.documentation.CapabilityDescription;
 import org.apache.nifi.annotation.documentation.SeeAlso;
 import org.apache.nifi.annotation.documentation.Tags;
@@ -41,6 +42,7 @@ import static groovy.json.JsonParserType.LAX;
 @CapabilityDescription("Converts JSON data to CSV data. The JSON must be an object or an array, "
         + "if an array, the array elements must be JSON objects or strings that define JSON objects.")
 @SeeAlso()
+@InputRequirement(InputRequirement.Requirement.INPUT_REQUIRED)
 public class ConvertJSONToCSV extends AbstractProcessor {
 
     public static final Relationship REL_SUCCESS = new Relationship.Builder()

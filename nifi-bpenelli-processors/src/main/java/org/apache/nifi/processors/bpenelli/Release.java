@@ -16,6 +16,7 @@
  */
 package org.apache.nifi.processors.bpenelli;
 
+import org.apache.nifi.annotation.behavior.InputRequirement;
 import org.apache.nifi.annotation.documentation.CapabilityDescription;
 import org.apache.nifi.annotation.documentation.SeeAlso;
 import org.apache.nifi.annotation.documentation.Tags;
@@ -36,6 +37,7 @@ import java.util.*;
 @Tags({"hold, release, topic, key, cache, flowfile, bpenelli"})
 @CapabilityDescription("Releases the Hold on a given topic and key.")
 @SeeAlso(classNames = {"org.bpenelli.nifi.processors.Hold"})
+@InputRequirement(InputRequirement.Requirement.INPUT_REQUIRED)
 public class Release extends AbstractProcessor {
 
     public static final Relationship REL_SUCCESS = new Relationship.Builder()

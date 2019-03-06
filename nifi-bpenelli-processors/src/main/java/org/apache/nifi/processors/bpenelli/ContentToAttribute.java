@@ -16,6 +16,7 @@
  */
 package org.apache.nifi.processors.bpenelli;
 
+import org.apache.nifi.annotation.behavior.InputRequirement;
 import org.apache.nifi.annotation.documentation.CapabilityDescription;
 import org.apache.nifi.annotation.documentation.SeeAlso;
 import org.apache.nifi.annotation.documentation.Tags;
@@ -37,6 +38,7 @@ import java.util.concurrent.atomic.AtomicReference;
 @CapabilityDescription("Extracts the contents of a FlowFile into a named attribute, and optionally " +
         "executes expression language against the extracted content.")
 @SeeAlso()
+@InputRequirement(InputRequirement.Requirement.INPUT_REQUIRED)
 public class ContentToAttribute extends AbstractProcessor {
 
     public static final Relationship REL_SUCCESS = new Relationship.Builder()

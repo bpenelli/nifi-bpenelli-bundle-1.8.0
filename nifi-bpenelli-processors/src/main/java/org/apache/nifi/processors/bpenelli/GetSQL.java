@@ -18,6 +18,7 @@ package org.apache.nifi.processors.bpenelli;
 
 import groovy.sql.GroovyRowResult;
 import groovy.sql.Sql;
+import org.apache.nifi.annotation.behavior.InputRequirement;
 import org.apache.nifi.annotation.behavior.WritesAttribute;
 import org.apache.nifi.annotation.behavior.WritesAttributes;
 import org.apache.nifi.annotation.documentation.CapabilityDescription;
@@ -41,6 +42,7 @@ import java.util.*;
 @CapabilityDescription("Creates a FlowFile for each row returned from a SQL query with an attribute added for each field.")
 @SeeAlso()
 @WritesAttributes({@WritesAttribute(attribute = "sql.failure.reason", description = "The reason the FlowFile was sent to failue relationship.")})
+@InputRequirement(InputRequirement.Requirement.INPUT_REQUIRED)
 public class GetSQL extends AbstractProcessor {
 
     // Relationships

@@ -17,6 +17,7 @@
 package org.apache.nifi.processors.bpenelli;
 
 import groovy.json.JsonSlurper;
+import org.apache.nifi.annotation.behavior.InputRequirement;
 import org.apache.nifi.annotation.documentation.CapabilityDescription;
 import org.apache.nifi.annotation.documentation.SeeAlso;
 import org.apache.nifi.annotation.documentation.Tags;
@@ -36,6 +37,7 @@ import java.util.concurrent.atomic.AtomicReference;
 @Tags({"goldengate, sql, trail, json, bpenelli"})
 @CapabilityDescription("Parses an Oracle GoldenGate trail file and builds a corresponding SQL statement.")
 @SeeAlso()
+@InputRequirement(InputRequirement.Requirement.INPUT_REQUIRED)
 public class GoldenGateToSQL extends AbstractProcessor {
 
     public static final Relationship REL_SUCCESS = new Relationship.Builder()

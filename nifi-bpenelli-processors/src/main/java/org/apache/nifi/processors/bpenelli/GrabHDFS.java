@@ -51,7 +51,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
 @SuppressWarnings({"WeakerAccess", "EmptyMethod", "unused"})
-@InputRequirement(Requirement.INPUT_REQUIRED)
 @Tags({"hadoop", "grab", "HDFS", "get", "fetch", "ingest", "source", "filesystem"})
 @CapabilityDescription("Grab files from Hadoop Distributed File System (HDFS) into FlowFiles.")
 @WritesAttributes({
@@ -61,6 +60,7 @@ import java.util.regex.Pattern;
         @WritesAttribute(attribute = "hdfs.failure.reason", description = "The reason the FlowFile was sent to failue relationship.")
 })
 @Restricted("Provides operator the ability to grab any file that NiFi has access to in HDFS or the local filesystem.")
+@InputRequirement(Requirement.INPUT_REQUIRED)
 public class GrabHDFS extends AbstractHadoopProcessor {
 
     // relationships

@@ -17,6 +17,7 @@
 package org.apache.nifi.processors.bpenelli;
 
 import groovy.json.JsonBuilder;
+import org.apache.nifi.annotation.behavior.InputRequirement;
 import org.apache.nifi.annotation.documentation.CapabilityDescription;
 import org.apache.nifi.annotation.documentation.SeeAlso;
 import org.apache.nifi.annotation.documentation.Tags;
@@ -38,6 +39,7 @@ import java.util.regex.Pattern;
 @Tags({"attributes", "to", "json", "regex", "match", "properties", "bpenelli"})
 @CapabilityDescription("Generates a JSON representation of specified symbols (attributes and dynamic properties).")
 @SeeAlso()
+@InputRequirement(InputRequirement.Requirement.INPUT_REQUIRED)
 public class SymbolsToJSON extends AbstractProcessor {
 
     public static final Relationship REL_SUCCESS = new Relationship.Builder()

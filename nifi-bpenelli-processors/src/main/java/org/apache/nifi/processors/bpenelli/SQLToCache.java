@@ -18,6 +18,7 @@ package org.apache.nifi.processors.bpenelli;
 
 import groovy.sql.GroovyRowResult;
 import groovy.sql.Sql;
+import org.apache.nifi.annotation.behavior.InputRequirement;
 import org.apache.nifi.annotation.behavior.WritesAttribute;
 import org.apache.nifi.annotation.behavior.WritesAttributes;
 import org.apache.nifi.annotation.documentation.CapabilityDescription;
@@ -47,6 +48,7 @@ import java.util.*;
         + "then a second map cache entry key will be updated with the same value as the first.")
 @SeeAlso()
 @WritesAttributes({@WritesAttribute(attribute = "sql.failure.reason", description = "The reason the FlowFile was sent to failue relationship.")})
+@InputRequirement(InputRequirement.Requirement.INPUT_REQUIRED)
 public class SQLToCache extends AbstractProcessor {
 
     public static final Relationship REL_SUCCESS = new Relationship.Builder()

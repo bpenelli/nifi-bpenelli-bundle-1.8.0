@@ -16,10 +16,7 @@
  */
 package org.apache.nifi.processors.bpenelli;
 
-import org.apache.nifi.annotation.behavior.ReadsAttribute;
-import org.apache.nifi.annotation.behavior.ReadsAttributes;
-import org.apache.nifi.annotation.behavior.WritesAttribute;
-import org.apache.nifi.annotation.behavior.WritesAttributes;
+import org.apache.nifi.annotation.behavior.*;
 import org.apache.nifi.annotation.documentation.CapabilityDescription;
 import org.apache.nifi.annotation.documentation.SeeAlso;
 import org.apache.nifi.annotation.documentation.Tags;
@@ -43,6 +40,7 @@ import java.util.*;
 @WritesAttributes({
         @WritesAttribute(attribute = "check.failure.reason", description = "The reason the FlowFile was sent to failure relationship."),
 })
+@InputRequirement(InputRequirement.Requirement.INPUT_REQUIRED)
 public class CheckState extends AbstractProcessor {
 
     public static final Relationship REL_LESS_THAN = new Relationship.Builder()
