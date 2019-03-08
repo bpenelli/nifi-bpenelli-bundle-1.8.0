@@ -1,5 +1,4 @@
 */target/**
-!*.nar
 .project
 .settings
 .classpath
